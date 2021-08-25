@@ -1,7 +1,10 @@
 import { createStore } from "redux";
-import { decrement, increment } from "./redux/actions-creators.js";
+import {
+  decrement,
+  increment,
+  asyncIncrement,
+} from "./redux/actions-creators.js";
 import { rootReducer } from "./redux/rootReducer.js";
-import { INCREMENT, DECREMENT } from "./redux/types.js";
 import "./styles.css";
 
 const counter = document.getElementById("counter");
@@ -27,7 +30,9 @@ store.subscribe(() => {
 
 store.dispatch({ type: "INIT_APLICATION" });
 
-asyncBtn.addEventListener("click", () => {});
+asyncBtn.addEventListener("click", () => {
+  store.dispatch(asyncIncrement());
+});
 
 themeBtn.addEventListener("click", () => {
   //   document.body.classList.toggle("dark");
